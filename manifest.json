@@ -1,0 +1,9 @@
+{
+  "id": "obsidian-rich-copy",
+  "name": "Rich Text Copy Tool",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Adds a floating button to copy notes as rich text for Outlook and Teams.",
+  "author": "Lemex AI Assistant",
+  "isDesktopOnly": false
+}
