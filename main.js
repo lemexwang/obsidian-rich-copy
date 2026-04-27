@@ -137,6 +137,17 @@ class RichCopyPlugin extends obsidian.Plugin {
             'hr': 'border: none; border-top: 1px solid #edf2f7; margin: 16px 0;'
         };
 
+        // Preserve table cell alignment from Obsidian's rendered classes before stripping
+        const alignMap = { 'has-text-align-left': 'left', 'has-text-align-center': 'center', 'has-text-align-right': 'right' };
+        container.querySelectorAll('th, td').forEach(cell => {
+            for (const [cls, align] of Object.entries(alignMap)) {
+                if (cell.classList.contains(cls)) {
+                    cell.setAttribute('style', (cell.getAttribute('style') || '') + `text-align:${align};`);
+                    break;
+                }
+            }
+        });
+
         // Remove Obsidian-specific UI elements that should not appear in paste output
         container.querySelectorAll(
             '.copy-code-button, .edit-block-button, .tag-pane-tag-count, ' +
